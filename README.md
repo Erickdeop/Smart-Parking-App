@@ -2,7 +2,7 @@
 
 ## This is the repository of the smart parking app, a project of the Projeto Integrado subject @ UFRJ.
 
-![smart-parking-logo](src\assets\smart-parking-logo.png 'Smart Parking')
+![smart-parking-logo](https://github.com/Erickdeop/Smart-Parking-App/blob/main/src/assets/smart-parking-logo.png 'Smart Parking')
 
 ## Install steps:
 
