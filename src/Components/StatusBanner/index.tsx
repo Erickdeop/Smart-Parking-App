@@ -1,7 +1,7 @@
 import { TextBox } from '../../Pages/Login/styles';
 
 interface StatusBannerProps {
-  isAuthorized: boolean;
+  isAuthorized: number;
   cardId?: string;
   nearestFreeSlot?: number;
 }
@@ -11,16 +11,17 @@ const StatusBanner: React.FC<StatusBannerProps> = ({
   cardId,
   nearestFreeSlot
 }) => {
+  const isAuthorizedBoolean = isAuthorized === 1 ? true : false;
   return (
     <TextBox>
       <h1>Por favor, aproxime o seu cartão do leitor...</h1>
-      {!!cardId && !isAuthorized && (
+      {!!cardId && !isAuthorizedBoolean && (
         <div className="unauthorized">
           <h2>{`Cartão de ID ${cardId} não autorizado`}</h2>
           <p>Por favor, tente novamente ou entre em contato com a central.</p>
         </div>
       )}
-      {!!cardId && isAuthorized && (
+      {!!cardId && isAuthorizedBoolean && (
         <>
           <div className="authorized">
             <h2>Cartão autorizado</h2>

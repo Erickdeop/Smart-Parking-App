@@ -3,37 +3,29 @@ import FullPageTemplate from '../../Components/FullPageTemplate';
 import { LoginContainer } from './styles';
 import NumberOfParkingSpaces from '../../Components/NumberOfParkingSpaces';
 import StatusBanner from '../../Components/StatusBanner';
+import useFileReader from '../../Hooks/useFileReader';
 
-interface LoginProps {
+interface ParkingInfo {
   id?: string;
-  isAuthorized?: boolean;
+  autorizado?: number;
+  vagaMaisProxima: number;
+  numeroVagasDisponiveis: number;
 }
 
-const Login: React.FC<LoginProps> = () => {
-  const [cardId, setCardId] = useState<string>();
-  const [isAuthorized, setIsAuthorized] = useState<boolean>(false);
-
-  useEffect(() => {
-    setCardId('1234567890');
-    setIsAuthorized(true);
-  }, []);
-
-  const parkingInfo = {
-    numberOfParkingSpaces: 3,
-    nearestFreeSlot: 1
-  };
+const Login: React.FC = () => {
+  const parkingInfo: ParkingInfo = useFileReader(2000);
 
   return (
     <FullPageTemplate>
       <LoginContainer>
         <img src="src\assets\smart-parking-logo.png" alt="Smart Parking Logo" />
         <NumberOfParkingSpaces
-          numberOfParkingSpaces={parkingInfo.numberOfParkingSpaces}
+          numberOfParkingSpaces={parkingInfo?.numeroVagasDisponiveis}
         />
         <StatusBanner
-          isAuthorized={isAuthorized}
-          cardId={cardId}
-          nearestFreeSlot={parkingInfo.nearestFreeSlot}
+          isAuthorized={parkingInfo?.autorizado}
+          cardId={parkingInfo?.id}
+          nearestFreeSlot={parkingInfo?.vagaMaisProxima}
         />
       </LoginContainer>
     </FullPageTemplate>
