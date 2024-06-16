@@ -1,0 +1,5 @@
+{ numeroVagasDisponiveis: 4, vagaMaisProxima: 3 }
+{ numeroVagasDisponiveis: 4, vagaMaisProxima: 3, id: 'AS 32 31 AF', autorizado: 1 }
+{ numeroVagasDisponiveis: 2, vagaMaisProxima: 3, id: 'AS 32 31 AF', autorizado: 1 }
+{ numeroVagasDisponiveis: 2, vagaMaisProxima: 3, id: 'AS 32 31 AF', autorizado: 0 }
+{ numeroVagasDisponiveis: 4, vagaMaisProxima: 3 }
