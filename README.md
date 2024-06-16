@@ -6,7 +6,7 @@
 
 ## Install steps:
 
-#### Download and install Node.js:
+### Download and install Node.js:
 
 - Windows: https://nodejs.org/en/download
 - Linux: Execute the following commands in a terminal window:
@@ -16,14 +16,15 @@
   sudo apt install nodejs
   ```
 
-#### Clone this repository with the command
+### Clone this repository with the command
 
 ```
 git clone
 ```
 
-#### Execute the project
+### Execute the project
 
+#### FrontEnd
 - To install node dependencies, open the cloned directory and, at the root,
   execute in a terminal window:
   ```
@@ -33,3 +34,16 @@ git clone
   ```
   npm run dev
   ```
+
+#### BackEnd
+- Also install the node dependencies in the server directory using the same comand:
+  ```
+  npm install
+  ```
+- Install the pyserial lib to run the sync-write.py script:
+  ```
+  pip install pyserial
+  ```
+- Install the [MFRC522.h lib](https://github.com/miguelbalboa/rfid) to upload the arduino program to the arduino board.
+
+### Run ./run at the root
