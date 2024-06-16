@@ -10,6 +10,11 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/node": "^20.14.2",
+    "axios": "^1.7.2",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^6.1.8"
@@ -25,5 +30,10 @@
     "eslint-plugin-react-refresh": "^0.4.6",
     "typescript": "^5.2.2",
     "vite": "^5.2.0"
-  }
+  },
+  "description": "## This is the repository of the smart parking app, a project of the Projeto Integrado subject @ UFRJ.",
+  "main": ".eslintrc.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
