@@ -1,0 +1,30 @@
+#!/bin/bash
+
+# Caminhos para os scripts
+PYTHON_SCRIPT="./arduino/sync-write.py"
+NODE_SCRIPT="./server/server.js"
+DATA_FILE="./arduinoData.txt"
+
+# Iniciar o script Python em segundo plano e redirecionar a saída para data.txt
+echo "Iniciando o script Python..."
+nohup python3 "$PYTHON_SCRIPT" >> "$DATA_FILE" 2>&1 &
+
+# Obter o PID do script Python
+PYTHON_PID=$!
+
+# Iniciar o servidor Node.js em segundo plano
+echo "Iniciando o servidor Node.js..."
+nohup node "$NODE_SCRIPT" >> "$DATA_FILE" 2>&1 &
+
+# Obter o PID do servidor Node.js
+NODE_PID=$!
+
+# Informar os PIDs dos processos iniciados
+echo "Script Python rodando com PID: $PYTHON_PID"
+echo "Servidor Node.js rodando com PID: $NODE_PID"
+
+# Manter o script em execução para permitir a interrupção dos processos
+trap "echo 'Encerrando os processos...'; kill $PYTHON_PID $NODE_PID; exit" INT
+
+# Esperar até que ambos os processos sejam encerrados
+wait $PYTHON_PID $NODE_PID
