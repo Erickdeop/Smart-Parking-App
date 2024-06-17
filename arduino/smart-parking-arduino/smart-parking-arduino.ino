@@ -10,8 +10,14 @@
 MFRC522 mfrc522(SS_PIN, RST_PIN);   // Create MFRC522 instance.
 
 //Servomotor:
-#include <Servo.h>
-Servo servo1;
+
+#define     servo        2
+
+//LEDS:
+
+#define     led1      A1
+#define     led2      A2
+#define     led3      A3
 
 //Sensor ultrassônico 1:
 
@@ -50,8 +56,12 @@ void setup()
   Serial.begin(9600);   // Inicia a serial
 
   //Servomotor:
-  servo1.attach(2);   // Anexa o Servo ao Pin4
-  servo1.write(180); //seta o servomotor no angulo 0
+  pinMode(servo, OUTPUT);
+
+  //LEDS:
+  pinMode(led1, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
 
   //RFID:
  
@@ -86,8 +96,12 @@ double SensorVaga1() {
 
   distancia1 = tempo1/58;
 
-  if(distancia1 <= 8) return 1; //VAGA OCUPADA
-
+  if(distancia1 <= 8) {
+    digitalWrite(led1, HIGH);
+    digitalWrite(led1, LOW);
+    return 1; //VAGA OCUPADA
+  }
+    
   else return 0; //VAGA DISPONÍVEL
 
 }
@@ -102,8 +116,12 @@ double SensorVaga2() {
 
   distancia2 = tempo2/58;
 
-  if(distancia2 <= 8) return 1; //VAGA OCUPADA
-
+  if(distancia2 <= 8) {
+    digitalWrite(led2, HIGH);
+    digitalWrite(led2, LOW);
+    return 1; //VAGA OCUPADA
+  }
+  
   else return 0; //VAGA DISPONÍVEL
 
 }
@@ -118,8 +136,12 @@ double SensorVaga3() {
 
   distancia3 = tempo3/58;
 
-  if(distancia3 <= 8) return 1; //VAGA OCUPADA
-
+  if(distancia3 <= 8) {
+    digitalWrite(led3, HIGH);
+    digitalWrite(led3, LOW);
+    return 1; //VAGA OCUPADA
+  }
+  
   else return 0; //VAGA DISPONÍVEL
 
 }
@@ -181,9 +203,9 @@ String ModuloRFID() {
 }
 
 void ServoMotor() {
-  servo1.write(90);
-  // delay(3000);
-  servo1.write(180);
+  digitalWrite(servo, HIGH);
+
+  digitalWrite(servo, LOW);
 }
 
 String VagaMaisProxima() {
