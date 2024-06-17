@@ -23,14 +23,24 @@ const StatusBanner: React.FC<StatusBannerProps> = ({
       )}
       {!!cardId && isAuthorizedBoolean && (
         <>
-          <div className="authorized">
-            <h2>Cartão autorizado</h2>
-            <span>
-              <p>Siga até a</p>
-              <p className="bold">vaga mais próxima</p>
-            </span>
-            <p className="number">{nearestFreeSlot}</p>
-          </div>
+          {nearestFreeSlot === -1 ? (
+            <div className="unauthorized">
+              <h2>{'Não há vagas disponíveis'}</h2>
+              <p>
+                Por favor, espere até que uma vaga seja liberada ou siga até
+                outra unidade
+              </p>
+            </div>
+          ) : (
+            <div className="authorized">
+              <h2>Cartão autorizado</h2>
+              <span>
+                <p>Siga até a</p>
+                <p className="bold">vaga mais próxima</p>
+              </span>
+              <p className="number">{nearestFreeSlot}</p>
+            </div>
+          )}
         </>
       )}
     </TextBox>

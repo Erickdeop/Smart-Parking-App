@@ -13,7 +13,17 @@ interface ParkingInfo {
 }
 
 const Login: React.FC = () => {
-  const parkingInfo: ParkingInfo = useFileReader(2000);
+  const [requestTimeout, setRequestTimeout] = useState(1000);
+
+  const parkingInfo: ParkingInfo = useFileReader(requestTimeout);
+
+  useEffect(() => {
+    if (parkingInfo?.autorizado !== undefined) {
+      setRequestTimeout(5000);
+    } else {
+      setRequestTimeout(1000);
+    }
+  }, [parkingInfo?.autorizado, parkingInfo?.vagaMaisProxima]);
 
   return (
     <FullPageTemplate>
