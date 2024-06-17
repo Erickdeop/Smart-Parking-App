@@ -4,14 +4,14 @@ import time
 # Configurações da porta serial
 serial_port = '/dev/ttyUSB0'  # Substitua pela porta serial correta no seu sistema
 baud_rate = 9600
-file_path = 'dados.txt'
+file_path = 'arduinoData.txt'
 
 # Abre a porta serial
 ser = serial.Serial(serial_port, baud_rate, timeout=1)
 
 try:
     # Abre o arquivo para adicionar dados
-    with open(file_path, 'a') as file:
+    with open(file_path, 'w') as file:
         while True:
             # Lê uma linha da porta serial
             line = ser.readline().decode('utf-8').strip()

@@ -154,7 +154,9 @@ String ModuloRFID() {
     // Serial.println("Acesso autorizado");
 
     retorno.concat("id: ");
+    retorno.concat("\"");
     retorno.concat(conteudo.substring(1));
+    retorno.concat("\"");
     retorno.concat(", autorizado: ");
     retorno.concat(true);
        
@@ -167,8 +169,10 @@ String ModuloRFID() {
     // Serial.println("Acesso negado!");
 
     retorno.concat("id: ");
+    retorno.concat("\"");
     retorno.concat(conteudo.substring(1));
-    retorno.concat(", autorizado: ");
+    retorno.concat("\"");
+        retorno.concat(", autorizado: ");
     retorno.concat(false);
         
   }
@@ -251,4 +255,3 @@ void loop() {
 
   delay(2000);
 } 
- 
